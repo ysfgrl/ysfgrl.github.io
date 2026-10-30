@@ -200,9 +200,8 @@
 		.experience-item h3, .project-card h3, .education-item h3 { margin: 0; font-size: 18px; font-weight: 600; }
 		.experience-item p, .education-item p { margin: 10px 0 0; color: rgb(10 10 10 / 80%); font-size: 14px; line-height: 1.65; }
 		.projects { padding-block: 56px; border-top: 1px solid var(--line); background: var(--paper); }
-		.project-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; margin-top: 24px; }
+		.project-grid { display: grid; gap: 16px; margin-top: 24px; }
 		.project-card {
-			min-height: 110px;
 			padding: 20px;
 			border: 1px solid var(--line);
 			border-radius: 8px;
@@ -210,6 +209,29 @@
 			transition: border-color 160ms ease;
 		}
 		.project-card:hover { border-color: var(--blue); }
+		.project-card p { max-width: 760px; margin: 10px 0 0; color: var(--muted); font-size: 14px; line-height: 1.75; }
+		.project-gallery {
+			display: flex;
+			gap: 12px;
+			margin: 20px -4px 0;
+			padding: 0 4px 10px;
+			overflow-x: auto;
+			scroll-snap-type: x mandatory;
+			scrollbar-color: var(--line) transparent;
+			scrollbar-width: thin;
+		}
+		.project-gallery:focus-visible { outline: 2px solid var(--blue); outline-offset: 4px; }
+		.project-gallery img {
+			display: block;
+			width: min(78vw, 360px);
+			height: clamp(220px, 42vw, 340px);
+			flex: 0 0 auto;
+			border: 1px solid var(--line);
+			border-radius: 6px;
+			background: var(--muted-bg);
+			object-fit: contain;
+			scroll-snap-align: start;
+		}
 		.skills { border-top: 1px solid var(--line); }
 		.skill-list { display: flex; flex-wrap: wrap; gap: 8px; margin: 20px 0 0; padding: 0; list-style: none; }
 		.skill-list li { padding: 6px 9px; border-radius: 6px; background: var(--muted-bg); color: var(--chip-fg); font-size: 12px; }
@@ -245,7 +267,6 @@
 			.about { padding-block: 40px; }
 			.experience, .skills, .education, .projects, .open-source { padding-block: 40px; }
 			.experience-item { grid-template-columns: 1fr; gap: 10px; }
-			.project-grid { gap: 12px; }
 			.contact { padding-block: 40px; }
 		}
 		@media (max-width: 520px) {
@@ -262,7 +283,6 @@
 			h1 { margin-top: 8px; font-size: 32px; }
 			.hero-copy { margin-inline: auto; font-size: 15px; }
 			.hero-actions { justify-content: center; gap: 8px; }
-			.project-grid { grid-template-columns: 1fr; }
 			.project-card { min-height: 0; padding: 21px; }
 			.contact { align-items: flex-start; flex-direction: column; gap: 22px; }
 			.contact-links { gap: 16px; }
@@ -358,16 +378,31 @@
 				<h2 id="projects-title">Üzerinde çalıştığım <span>projeler</span></h2>
 				<div class="project-grid">
 					<article class="project-card">
-						<h3>BlueRoad TvBox</h3>
+						<h3>TvBox</h3>
+						<p>Araç içi multimedya deneyimini internete bağlı kalmadan da sürdüren TvBox, kendi Access Point ağı üzerinden yolcuların içeriklere erişmesini sağlar. Yolcular ağa bağlandıktan sonra çevrim dışı içerikleri izleyebilir; böylece yol boyunca eğlence, bağlantı durumundan bağımsız olarak devam eder.</p>
+						<div class="project-gallery" tabindex="0" role="group" aria-label="TvBox ekran görüntüleri, yatay kaydırılabilir">
+							<img src="projects/tvbox/WhatsApp Image 2026-10-30 at 11.43.30.jpeg" alt="TvBox kanal, film, müzik ve e-kitap içerik ekranı" loading="lazy">
+							<img src="projects/tvbox/WhatsApp Image 2026-10-30 at 11.43.47.jpeg" alt="TvBox araç içi multimedya ana menüsü" loading="lazy">
+						</div>
 					</article>
 					<article class="project-card">
 						<h3>BlueRoad Control</h3>
+						<p>Araç içindeki koltuk, aydınlatma ve televizyon sistemlerini tek bir uygulamadan yönetmeye yardımcı olan araç kontrol çözümü. Merkezi kontrol arayüzüyle yolcu alanındaki farklı donanımların durumunu görüntülemeyi ve temel işlevlerini kolayca yönetmeyi mümkün kılar.</p>
+						<div class="project-gallery" tabindex="0" role="group" aria-label="BlueRoad Control ekran görüntüleri, yatay kaydırılabilir">
+							<img src="projects/blueroadcontrol/1-preview.png" alt="BlueRoad Control araç içi koltuk, aydınlatma ve televizyon kontrol ekranı" loading="lazy">
+							<img src="projects/blueroadcontrol/5-discovery-module.DAUApaOh.png" alt="BlueRoad Control cihaz keşif ekranı" loading="lazy">
+							<img src="projects/blueroadcontrol/9-add-control-select-control-type.CSKbWEb8.png" alt="BlueRoad Control yeni kontrol türü seçme ekranı" loading="lazy">
+						</div>
 					</article>
 					<article class="project-card">
 						<h3>Scorates</h3>
 					</article>
 					<article class="project-card">
 						<h3>Busdroid</h3>
+						<p>Otobüs arkası yolcu ekranları için geliştirilen gömülü Android uygulaması, araç içi eğlence deneyimini doğrudan ekranlara taşır. Uydu üzerinden canlı yayın akışı desteğiyle yolculara seyahat sırasında televizyon içeriği sunar.</p>
+						<div class="project-gallery" tabindex="0" role="group" aria-label="Busdroid ekran görüntüleri, yatay kaydırılabilir">
+							<img src="projects/busdroid/busdroid.png" alt="Busdroid otobüs içi eğlence uygulamasının ana menüsü" loading="lazy">
+						</div>
 					</article>
 					<article class="project-card">
 						<h3>CoreSafe</h3>
