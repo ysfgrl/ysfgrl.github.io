@@ -4,7 +4,7 @@
 
 Flutter ile iOS ve Android uygulamaları, Go ile backend servisleri ve mikroservisler geliştiriyorum. Otomotiv ve IoT projelerinde mobil uygulamalardan bağlı cihazlara uzanan ürünler üzerinde uçtan uca çalışıyorum.
 
-[Portfolyo sayfasını görüntüle](./index.html)
+[Portfolyo sayfasını görüntüle](https://ysfgrl.github.io/)
 
 ## Öne çıkan teknolojiler
 
