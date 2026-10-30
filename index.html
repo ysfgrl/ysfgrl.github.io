@@ -4,7 +4,7 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta name="theme-color" content="#f2f4ed">
-	<meta name="description" content="Yusuf Uğurlu'nun kişisel portfolyosu. Çalışmalar, fikirler ve yeni başlangıçlar.">
+	<meta name="description" content="Yusuf Uğurlu'nun Flutter mobil uygulamaları, Go backend servisleri, IoT ve Ar-Ge deneyimleri.">
 	<title>Yusuf Uğurlu — Kişisel Portfolyo</title>
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -67,8 +67,6 @@
 			transition: color 160ms ease;
 		}
 		.nav a:hover { color: var(--blue); }
-		.nav .github-link { color: var(--ink); font-weight: 700; }
-
 		.hero {
 			min-height: 600px;
 			display: grid;
@@ -182,35 +180,39 @@
 		.about h2 span { font-family: var(--serif); font-style: italic; }
 		.about-copy { max-width: 550px; margin: 20px 0 0; color: var(--muted); font-size: 15px; line-height: 1.85; }
 
-		.work { padding-block: 77px 90px; background: #e7eae1; }
-		.work-inner { display: grid; grid-template-columns: 1fr 1.45fr; gap: 80px; }
-		.work-content { border-top: 1px solid #c8cdc2; padding-top: 24px; }
-		.work-heading { display: flex; align-items: baseline; justify-content: space-between; gap: 16px; }
-		.work-heading h2 { font-size: 32px; }
-		.work-count { color: var(--muted); font-size: 12px; }
-		.empty-work {
-			display: flex;
-			min-height: 166px;
-			align-items: center;
-			justify-content: space-between;
-			gap: 24px;
-			margin-top: 26px;
-			padding: 24px;
-			background: var(--paper);
-		}
-		.empty-work p { max-width: 300px; margin: 0; color: #5c6158; font-size: 14px; line-height: 1.7; }
-		.empty-mark {
+		.split-layout { display: grid; grid-template-columns: 1fr 1.45fr; gap: 80px; }
+		.experience, .skills, .education { padding-block: 78px; }
+		.experience h2 span, .projects h2 span, .skills h2 span { font-family: var(--serif); font-style: italic; }
+		.experience-list { margin-top: 30px; border-top: 1px solid var(--line); }
+		.experience-item {
 			display: grid;
-			width: 64px;
-			flex: 0 0 64px;
-			aspect-ratio: 1;
-			place-items: center;
-			background: var(--blue);
-			color: white;
-			font-family: var(--serif);
-			font-size: 30px;
-			font-style: italic;
+			grid-template-columns: 220px 1fr;
+			gap: 42px;
+			padding-block: 26px;
+			border-bottom: 1px solid var(--line);
 		}
+		.experience-meta { color: var(--muted); font-size: 13px; line-height: 1.7; }
+		.experience-meta strong { display: block; color: var(--ink); font-size: 14px; }
+		.experience-item h3, .project-card h3, .education-item h3 { margin: 0; font-size: 18px; font-weight: 600; }
+		.experience-item p, .project-card p, .education-item p { margin: 10px 0 0; color: var(--muted); font-size: 14px; line-height: 1.75; }
+		.projects { padding-block: 78px 88px; background: #e7eae1; }
+		.project-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; margin-top: 30px; }
+		.project-card { min-height: 220px; padding: 24px; background: var(--paper); }
+		.project-card .project-type { margin: 0 0 18px; color: var(--blue); font-size: 11px; font-weight: 700; letter-spacing: .04em; text-transform: uppercase; }
+		.project-card .project-link { display: inline-block; margin-top: 14px; font-size: 12px; font-weight: 700; text-underline-offset: 4px; }
+		.tag-list { display: flex; flex-wrap: wrap; gap: 7px; margin: 18px 0 0; padding: 0; list-style: none; }
+		.tag-list li { padding: 6px 9px; background: #e7eae1; color: #51564d; font-size: 11px; }
+		.skills { border-top: 1px solid var(--line); }
+		.skill-list { display: flex; flex-wrap: wrap; gap: 10px; margin: 24px 0 0; padding: 0; list-style: none; }
+		.skill-list li { padding: 10px 13px; border: 1px solid var(--line); font-size: 13px; }
+		.education { background: #e7eae1; }
+		.education-item { margin-top: 25px; padding-top: 23px; border-top: 1px solid #c8cdc2; }
+		.education-item + .education-item { margin-top: 20px; }
+		.education-item .education-level { margin-top: 5px; font-size: 12px; }
+		.contact { display: flex; align-items: center; justify-content: space-between; gap: 28px; padding-block: 64px; border-top: 1px solid var(--line); }
+		.contact h2 { margin: 10px 0 0; font-size: clamp(28px, 4vw, 40px); font-weight: 500; }
+		.contact-links { display: flex; flex-wrap: wrap; gap: 18px; }
+		.contact-links a { font-size: 13px; font-weight: 700; text-underline-offset: 4px; }
 
 		footer { display: flex; min-height: 100px; align-items: center; justify-content: space-between; gap: 20px; }
 		footer p { margin: 0; color: var(--muted); font-size: 12px; }
@@ -234,16 +236,18 @@
 			.hero-art::before { width: 120px; }
 			.hero-art::after { width: 160px; }
 			.art-initials { font-size: 86px; }
-			.about, .work-inner { grid-template-columns: 1fr; gap: 24px; }
+			.about, .split-layout { grid-template-columns: 1fr; gap: 24px; }
 			.about { padding-block: 58px; }
-			.work { padding-block: 58px; }
-			.work-content { margin-top: 4px; }
+			.experience, .skills, .education, .projects { padding-block: 58px; }
+			.experience-item { grid-template-columns: 170px 1fr; gap: 24px; }
+			.project-grid { gap: 12px; }
+			.contact { padding-block: 48px; }
 		}
 		@media (max-width: 520px) {
 			.shell { width: calc(100% - 36px); }
 			.wordmark { gap: 8px; font-size: 12px; }
 			.monogram { width: 30px; }
-			.nav { gap: 13px; }
+			.nav { gap: 12px; }
 			.nav a { font-size: 11px; }
 			.hero { grid-template-columns: 1fr; gap: 34px; padding-block: 62px 58px; }
 			h1 { margin-top: 20px; font-size: clamp(54px, 15vw, 76px); }
@@ -254,8 +258,11 @@
 			.art-initials { font-size: 100px; }
 			.hero-actions { gap: 17px; }
 			.button { min-height: 46px; padding-inline: 14px; }
-			.work-heading h2 { font-size: 28px; }
-			.empty-work { min-height: 150px; padding: 18px; }
+			.experience-item { grid-template-columns: 1fr; gap: 10px; }
+			.project-grid { grid-template-columns: 1fr; }
+			.project-card { min-height: 0; padding: 21px; }
+			.contact { align-items: flex-start; flex-direction: column; gap: 22px; }
+			.contact-links { gap: 16px; }
 			footer { min-height: 84px; }
 		}
 	</style>
@@ -268,56 +275,173 @@
 		</a>
 		<nav class="nav" aria-label="Ana gezinme">
 			<a href="#hakkimda">Hakkımda</a>
-			<a href="#calismalar">Çalışmalar</a>
-			<a class="github-link" href="https://github.com/yusuf.ugurlu" target="_blank" rel="noreferrer">GitHub ↗</a>
+			<a href="#deneyim">Deneyim</a>
+			<a href="#projeler">Projeler</a>
 		</nav>
 	</header>
 
 	<main>
 		<section class="hero shell" id="baslangic" aria-labelledby="hero-title">
 			<div>
-				<p class="eyebrow">Kişisel portfolyo</p>
-				<h1 id="hero-title">Merhaba,<br>ben <span class="serif">Yusuf.</span></h1>
-				<p class="hero-copy">Üzerinde çalıştığım projeleri, yeni fikirleri ve üretim yolculuğumu burada paylaşıyorum.</p>
+				<p class="eyebrow">Mobil uygulama · Backend · IoT</p>
+				<h1 id="hero-title">Yusuf <span class="serif">Uğurlu.</span></h1>
+				<p class="hero-copy">Bilgisayar mühendisiyim. Flutter ile iOS ve Android uygulamaları, Go ile backend servisleri ve mikroservisler geliştiriyorum. Mobil uygulamalardan bağlı cihazlara uzanan ürünlerde uçtan uca çalışıyorum.</p>
 				<div class="hero-actions">
-					<a class="button" href="#calismalar">Çalışmaları gör <span aria-hidden="true">↘</span></a>
-					<a class="text-link" href="#hakkimda">Hakkımda</a>
+					<a class="button" href="#projeler">Projeleri keşfet <span aria-hidden="true">↘</span></a>
+					<a class="text-link" href="mailto:ugurlu.yusuf63@gmail.com">İletişime geç</a>
 				</div>
 			</div>
 			<div class="hero-art" aria-label="Yusuf Uğurlu için YU monogramı">
-				<span class="art-index">Portfolyo · 01</span>
+				<span class="art-index">Yazılım mühendisi</span>
 				<span class="art-initials" aria-hidden="true">YU</span>
-				<span class="art-caption"><span>Yusuf Uğurlu</span><span aria-hidden="true">✳</span></span>
+				<span class="art-caption"><span>Mobil & Backend</span><span aria-hidden="true">✳</span></span>
 			</div>
 		</section>
 
 		<section class="about shell" id="hakkimda" aria-labelledby="about-title">
 			<p class="section-label">01 / Hakkımda</p>
 			<div>
-				<h2 id="about-title">Fikirler, emekle <span>şekillenir.</span></h2>
-				<p class="about-copy">Burası yaptıklarımı ve öğrenme sürecimde karşıma çıkanları bir araya getirdiğim kişisel alanım. Zamanla yeni projeler ve notlarla güncellenecek.</p>
+				<h2 id="about-title">Uygulamadan servise, <span>uçtan uca.</span></h2>
+				<p class="about-copy">2014'te Fırat Üniversitesi Bilgisayar Mühendisliği bölümünden mezun oldum. Kariyerimde ağırlıklı olarak Flutter ve Go ile mobil uygulamalar, REST API'ler ve mikroservisler geliştirdim. Otomotiv ve IoT projelerinde cihaz verilerinin toplanması, işlenmesi ve mobil uygulamalardan yönetilmesi üzerine çalıştım. Ar-Ge, görüntü işleme ve yapay zekâ projelerindeki deneyimimi sürdürülebilir ürünler geliştirmek için kullanıyorum.</p>
 			</div>
 		</section>
 
-		<section class="work" id="calismalar" aria-labelledby="work-title">
-			<div class="work-inner shell">
-				<p class="section-label">02 / Seçili işler</p>
-				<div class="work-content">
-					<div class="work-heading">
-						<h2 id="work-title">Çalışmalar</h2>
-						<span class="work-count">Yeni başlangıçlar</span>
+		<section class="experience shell" id="deneyim" aria-labelledby="experience-title">
+			<p class="section-label">02 / Deneyim</p>
+			<div>
+				<h2 id="experience-title">Ürün geliştirme ve <span>Ar-Ge</span></h2>
+				<div class="experience-list">
+					<article class="experience-item">
+						<div class="experience-meta"><strong>Dtek Detay Teknoloji Otomotiv</strong>Ocak 2023 — Devam ediyor</div>
+						<div>
+							<h3>Yazılım Geliştirme Uzmanı</h3>
+							<p>Araç elektroniğini uzaktan izleme ve yönetme çözümleri geliştiriyorum. Flutter uygulamaları ve Go mikroservislerinin yanı sıra telemetri, MongoDB, Docker ve araç içi NVR/kamera sistemleri üzerinde çalışıyorum.</p>
+						</div>
+					</article>
+					<article class="experience-item">
+						<div class="experience-meta"><strong>CatchProbe Intelligence Technology</strong>Ocak 2021 — Mart 2023</div>
+						<div>
+							<h3>Kıdemli Yazılım Geliştirme Uzmanı</h3>
+							<p>Siber güvenlik ürünleri için Go ve Python tabanlı veri işleme servisleri ve REST API'ler geliştirdim. Tehdit verilerinin işlenmesi ve analizinde MongoDB, Elasticsearch, MinIO ve Snort kullandım.</p>
+						</div>
+					</article>
+					<article class="experience-item">
+						<div class="experience-meta"><strong>Coremate Bilişim ve Savunma Sanayi</strong>Ocak 2020 — Mart 2021</div>
+						<div>
+							<h3>Ar-Ge Takım Lideri</h3>
+							<p>CoreSafe projesinde yüz algılama/tanıma, görüntü işleme ve yapay zekâ modellerinin gerçek zamanlı ürün entegrasyonunda görev aldım; Ar-Ge ekibinin planlama ve koordinasyonunu yürüttüm.</p>
+						</div>
+					</article>
+					<article class="experience-item">
+						<div class="experience-meta"><strong>Dtek Detay Teknoloji Otomotiv</strong>Ocak 2018 — Ocak 2020</div>
+						<div>
+							<h3>Yazılım Geliştirme Uzmanı</h3>
+							<p>Busdroid otobüs içi eğlence sistemi ve merkezi yönetim platformunun istemci uygulamaları, backend servisleri ve ağ bileşenlerini geliştirdim.</p>
+						</div>
+					</article>
+					<article class="experience-item">
+						<div class="experience-meta"><strong>Önceki deneyim</strong>2015 — 2019</div>
+						<div>
+							<h3>Yazılım Geliştirme & Ar-Ge</h3>
+							<p>Doğuş Soft, VBE ve Calleva'da Raspberry Pi tabanlı görüntü işleme, RFID/kart sistemleri, üniversite otomasyonları ve web servisleri geliştirdim.</p>
+						</div>
+					</article>
+				</div>
+			</div>
+		</section>
+
+		<section class="projects" id="projeler" aria-labelledby="projects-title">
+			<div class="shell">
+				<p class="section-label">03 / Seçili projeler</p>
+				<h2 id="projects-title">Farklı katmanlarda <span>çözümler</span></h2>
+				<div class="project-grid">
+					<article class="project-card">
+						<p class="project-type">Otomotiv · IoT</p>
+						<h3>Araç izleme ve NVR</h3>
+						<p>Araç cihazlarının mobil uygulamadan izlenip yönetilmesi; telemetri servisleri ve IP kamera kayıtlarına erişim.</p>
+						<ul class="tag-list"><li>Flutter</li><li>Go</li><li>MongoDB</li><li>Docker</li></ul>
+					</article>
+					<article class="project-card">
+						<p class="project-type">Mobil · Multimedya</p>
+						<h3>Busdroid</h3>
+						<p>Şehirler arası otobüsler için medya istemcileri, canlı TV ve cihazların merkezi yönetim platformu.</p>
+						<ul class="tag-list"><li>Flutter</li><li>Android</li><li>Go</li><li>REST API</li></ul>
+					</article>
+					<article class="project-card">
+						<p class="project-type">Yapay zekâ · Görüntü işleme</p>
+						<h3>CoreSafe</h3>
+						<p>Maske tespiti, yüz tanıma ve temassız ölçüm özelliklerini bir araya getiren gerçek zamanlı, gömülü sistem çözümü.</p>
+						<ul class="tag-list"><li>Görüntü işleme</li><li>Yapay zekâ</li><li>NVIDIA GPU</li><li>Gömülü sistemler</li></ul>
+					</article>
+					<article class="project-card">
+						<p class="project-type">Güvenlik · Veri analizi</p>
+						<h3>Tehdit istihbaratı servisleri</h3>
+						<p>Honeypot ve ağ verilerinin toplanması, işlenmesi ve analizine yönelik mikroservisler ve API'ler.</p>
+						<ul class="tag-list"><li>Go</li><li>Python</li><li>Elasticsearch</li><li>MongoDB</li></ul>
+					</article>
+					<article class="project-card">
+						<p class="project-type">Eğitim · RFID</p>
+						<h3>Kampüs kart ve geçiş sistemleri</h3>
+						<p>Üniversite yemekhane ve geçiş noktaları için kart doğrulama, bakiye yükleme ve cihaz yazılımları.</p>
+						<ul class="tag-list"><li>Java</li><li>Raspberry Pi</li><li>Arduino</li><li>RFID</li></ul>
+						<a class="project-link" href="https://www.youtube.com/watch?v=RYonrEo9Ldg" target="_blank" rel="noreferrer">Prototip videosu ↗</a>
+						<a class="project-link" href="https://www.youtube.com/watch?v=EdXkfCtjkTw" target="_blank" rel="noreferrer">OGS sistemi videosu ↗</a>
+					</article>
+					<article class="project-card">
+						<p class="project-type">Görüntü işleme · Otomasyon</p>
+						<h3>360PhotoBox</h3>
+						<p>Ürünleri otomatik fotoğraflayan, görüntüleri işleyip e-ticaret servislerine aktaran Raspberry Pi tabanlı sistem.</p>
+						<ul class="tag-list"><li>Python</li><li>PHP</li><li>GPhoto2</li><li>Pillow</li><li>PyQt</li><li>Raspberry Pi</li></ul>
+						<a class="project-link" href="https://youtu.be/PfwB1oDz8No" target="_blank" rel="noreferrer">Proje videosu ↗</a>
+					</article>
+				</div>
+			</div>
+		</section>
+
+		<section class="skills shell" id="yetenekler" aria-labelledby="skills-title">
+			<p class="section-label">04 / Teknolojiler</p>
+			<div>
+				<h2 id="skills-title">Kullandığım <span>araçlar</span></h2>
+				<ul class="skill-list">
+					<li>Flutter</li><li>Go</li><li>Python</li><li>REST API</li><li>Mikroservisler</li>
+					<li>MongoDB</li><li>Elasticsearch</li><li>Redis</li><li>RabbitMQ</li><li>Docker</li>
+					<li>MQTT</li><li>Linux</li><li>Java</li><li>JavaScript</li><li>PHP</li>
+					<li>C++</li><li>Raspberry Pi</li><li>Arduino</li><li>Git</li>
+				</ul>
+			</div>
+		</section>
+
+		<section class="education" id="egitim" aria-labelledby="education-title">
+			<div class="shell split-layout">
+				<p class="section-label">05 / Eğitim</p>
+				<div>
+					<h2 id="education-title">Fırat Üniversitesi</h2>
+					<div class="education-item">
+						<h3>Adli Bilişim Mühendisliği</h3>
+						<p class="education-level">Yüksek lisans · Eylül 2017 — Devam ediyor</p>
 					</div>
-					<div class="empty-work">
-						<p>Projelerim hazır oldukça burada paylaşacağım. Yeni işler için tekrar uğra.</p>
-						<span class="empty-mark" aria-hidden="true">+</span>
+					<div class="education-item">
+						<h3>Bilgisayar Mühendisliği</h3>
+						<p class="education-level">Lisans · Eylül 2009 — Haziran 2014</p>
 					</div>
 				</div>
+			</div>
+		</section>
+
+		<section class="contact shell" id="iletisim" aria-labelledby="contact-title">
+			<div>
+				<p class="section-label">06 / İletişim</p>
+				<h2 id="contact-title">Birlikte üretelim.</h2>
+			</div>
+			<div class="contact-links">
+				<a href="mailto:ugurlu.yusuf63@gmail.com">E-posta ↗</a>
+				<a href="https://github.com/yusuf.ugurlu" target="_blank" rel="noreferrer">GitHub ↗</a>
 			</div>
 		</section>
 	</main>
 
 	<footer class="shell">
-		<p>© <span id="year">2026</span> Yusuf Uğurlu</p>
+		<p>© 2026 Yusuf Uğurlu</p>
 		<a href="#baslangic">Başa dön ↑</a>
 	</footer>
 </body>
