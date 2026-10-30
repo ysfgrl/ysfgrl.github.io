@@ -223,14 +223,50 @@
 		.project-gallery:focus-visible { outline: 2px solid var(--blue); outline-offset: 4px; }
 		.project-gallery img {
 			display: block;
-			width: min(78vw, 360px);
-			height: clamp(220px, 42vw, 340px);
+			width: min(64vw, 280px);
+			height: clamp(180px, 32vw, 260px);
 			flex: 0 0 auto;
 			border: 1px solid var(--line);
 			border-radius: 6px;
 			background: var(--muted-bg);
 			object-fit: contain;
 			scroll-snap-align: start;
+			cursor: zoom-in;
+		}
+		.image-viewer {
+			position: fixed;
+			max-width: none;
+			max-height: none;
+			width: max-content;
+			margin: auto;
+			padding: 48px 16px 16px;
+			overflow: visible;
+			border: 0;
+			background: transparent;
+		}
+		.image-viewer::backdrop { background: rgb(0 0 0 / 88%); }
+		.image-viewer img {
+			display: block;
+			max-width: min(92vw, 1400px);
+			max-height: 82vh;
+			object-fit: contain;
+			border-radius: 6px;
+		}
+		.image-viewer-close {
+			position: absolute;
+			top: 0;
+			right: 0;
+			display: grid;
+			width: 40px;
+			height: 40px;
+			place-items: center;
+			border: 1px solid rgb(255 255 255 / 45%);
+			border-radius: 50%;
+			background: rgb(0 0 0 / 55%);
+			color: white;
+			font: inherit;
+			font-size: 24px;
+			cursor: pointer;
 		}
 		.skills { border-top: 1px solid var(--line); }
 		.skill-list { display: flex; flex-wrap: wrap; gap: 8px; margin: 20px 0 0; padding: 0; list-style: none; }
@@ -396,6 +432,14 @@
 					</article>
 					<article class="project-card">
 						<h3>Scorates</h3>
+						<div class="project-gallery" tabindex="0" role="group" aria-label="Scorates ekran görüntüleri, yatay kaydırılabilir">
+							<img src="projects/scorates/Simulator Screenshot - iPhone 17 Pro - 2026-10-09 at 02.44.32.png" alt="Scorates uygulamasının ana ekranı" loading="lazy">
+							<img src="projects/scorates/Simulator Screenshot - iPhone 17 Pro - 2026-10-09 at 02.45.09.png" alt="Scorates ekran görüntüsü 2" loading="lazy">
+							<img src="projects/scorates/Simulator Screenshot - iPhone 17 Pro - 2026-10-09 at 02.45.24.png" alt="Scorates ekran görüntüsü 3" loading="lazy">
+							<img src="projects/scorates/Simulator Screenshot - iPhone 17 Pro - 2026-10-09 at 02.45.30.png" alt="Scorates ekran görüntüsü 4" loading="lazy">
+							<img src="projects/scorates/Simulator Screenshot - iPhone 17 Pro - 2026-10-09 at 02.45.47.png" alt="Scorates ekran görüntüsü 5" loading="lazy">
+							<img src="projects/scorates/Simulator Screenshot - iPhone 17 Pro - 2026-10-09 at 02.45.52.png" alt="Scorates ekran görüntüsü 6" loading="lazy">
+						</div>
 					</article>
 					<article class="project-card">
 						<h3>Busdroid</h3>
@@ -465,5 +509,39 @@
 		<p>© 2026 Yusuf Uğurlu</p>
 		<a href="#baslangic">Başa dön ↑</a>
 	</footer>
+	<dialog class="image-viewer" aria-label="Büyük ekran görüntüsü">
+		<button class="image-viewer-close" type="button" aria-label="Görseli kapat">×</button>
+		<img alt="">
+	</dialog>
+	<script>
+		const imageViewer = document.querySelector(".image-viewer");
+		const viewerImage = imageViewer.querySelector("img");
+		const closeViewer = imageViewer.querySelector(".image-viewer-close");
+
+		document.querySelectorAll(".project-gallery img").forEach((image) => {
+			image.tabIndex = 0;
+			image.setAttribute("role", "button");
+			image.setAttribute("aria-label", `${image.alt} - büyük görüntüle`);
+
+			const openViewer = () => {
+				viewerImage.src = image.src;
+				viewerImage.alt = image.alt;
+				imageViewer.showModal();
+			};
+
+			image.addEventListener("click", openViewer);
+			image.addEventListener("keydown", (event) => {
+				if (event.key === "Enter" || event.key === " ") {
+					event.preventDefault();
+					openViewer();
+				}
+			});
+		});
+
+		closeViewer.addEventListener("click", () => imageViewer.close());
+		imageViewer.addEventListener("click", (event) => {
+			if (event.target === imageViewer) imageViewer.close();
+		});
+	</script>
 </body>
 </html>
