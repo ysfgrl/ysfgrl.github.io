@@ -54,4 +54,4 @@ Otobüs arkası yolcu ekranları için gömülü Android uygulaması. Uydu üzer
 
 ## İletişim
 
-[E-posta](mailto:ugurlu.yusuf63@gmail.com) · [GitHub](https://github.com/yusuf.ugurlu)
+[E-posta](mailto:ugurlu.yusuf63@gmail.com) · [GitHub](https://github.com/ysfgrl)
